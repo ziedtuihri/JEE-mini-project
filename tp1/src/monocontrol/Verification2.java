@@ -40,14 +40,12 @@ public class Verification2 extends HttpServlet {
 		String login=r.getParameter("login");
 		if (login.equals("admin"))
 				{
-				out.println ("<b> Bonjour Mr "+ r.getParameter("nom")+r.getParameter("prenom")+"vous êtes bien l'administrateur</b>");}
+				out.println ("<h3> Bonjour Mr "+ r.getParameter("nom")+r.getParameter("prenom")+"vous êtes bien l'administrateur</h3>");}
 		else {
 			
 			out.print("ce n'est pas l'administrateur");
 		}
-		
-		out.println ("<b> Bonjour Mr "+ r.getParameter("nom")+r.getParameter("prenom")+"vous êtes bien l'administrateur</b>");
-		
+				
 	}
 
 }
