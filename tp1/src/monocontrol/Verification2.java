@@ -1,6 +1,8 @@
 package monocontrol;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +32,9 @@ public class Verification2 extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest r, HttpServletResponse rs) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doGet(r, rs);
 		
 		PrintWriter out=rs.getWriter();
 		String login=r.getParameter("login");
@@ -43,7 +45,8 @@ public class Verification2 extends HttpServlet {
 			
 			out.print("ce n'est pas l'administrateur");
 		}
-
+		
+		out.println ("<b> Bonjour Mr "+ r.getParameter("nom")+r.getParameter("prenom")+"vous êtes bien l'administrateur</b>");
 		
 	}
 
