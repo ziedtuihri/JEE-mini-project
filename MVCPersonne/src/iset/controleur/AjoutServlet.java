@@ -2,13 +2,16 @@ package iset.controleur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import iset.modele.*;
 /**
  * Servlet implementation class AjoutServlet
  */
@@ -33,12 +36,27 @@ public class AjoutServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest r, HttpServletResponse rs) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doGet(r, rs);
 		
-		PrintWriter out = response.getWriter();
-		out.println ("<h3> Bonjour Mr "+ request.getParameter("nom")+"   "+request.getParameter("prenom")+"</h3>");
+		PrintWriter out = rs.getWriter();
+		out.println ("<h3> Bonjour Mr "+ r.getParameter("nom")+"   "+r.getParameter("prenom")+"</h3>");
+	
+			
+			String nom=r.getParameter("nom");
+			String Prénom=r.getParameter("Prénom");
+			String sex=r.getParameter("sex");
+			String code=r.getParameter("code");
+			Personne p=new Personne(nom,Prénom,sex,code);
+			 ArrayList<Personne> Per = new ArrayList<Personne>();
+			 Per.add(new Personne (nom,Prénom,sex,code));
+			HttpSession session=r.getSession();			
+			session.setAttribute("Personne", Per);
+
+			 rs.sendRedirect("./Affichage.jsp");
+		}
+
+	
 	}
 
-}

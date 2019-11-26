@@ -5,10 +5,17 @@ public class Personne {
 private String nom;
 private String preNom;
 private String sexe;
-private int codeP;
+private String codeP;
 
-Personne(){
+public Personne() {
 	
+}
+
+public Personne(String ch1,String ch2,String ch3,String code){
+	nom=ch1;
+	preNom=ch2;
+	sexe=ch3;
+	codeP=code;
 }
 
 public String getNom() {
@@ -35,11 +42,11 @@ public void setSexe(String sexe) {
 	this.sexe = sexe;
 }
 
-public int getCodeP() {
+public String getCodeP() {
 	return codeP;
 }
 
-public void setCodeP(int codeP) {
+public void setCodeP(String codeP) {
 	this.codeP = codeP;
 }
 
