@@ -49,10 +49,19 @@ public class AjoutServlet extends HttpServlet {
 			String sex=r.getParameter("sex");
 			String code=r.getParameter("code");
 			Personne p=new Personne(nom,Prénom,sex,code);
-			 ArrayList<Personne> Per = new ArrayList<Personne>();
-			 Per.add(new Personne (nom,Prénom,sex,code));
-			HttpSession session=r.getSession();			
-			session.setAttribute("Personne", Per);
+			
+			HttpSession session=r.getSession();	
+			ArrayList<Personne> pre;
+			pre = (ArrayList<Personne>)(session.getAttribute("Personne"));
+			if(pre == null) {
+				pre = new ArrayList<Personne>();
+				pre.add(p);
+			} else {
+				pre.add(p);
+			}
+			 
+					
+			session.setAttribute("Personne", pre);
 
 			 rs.sendRedirect("./Affichage.jsp");
 		}
